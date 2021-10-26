@@ -39,6 +39,10 @@ jobs:
           sudo apt-get install -f ./IDDast.deb 
           sudo dast-attacker-cli -accept-eula=Yes -license-key=${{ secrets.LICENSE_KEY }} -output-json=results.json -output-html=results.html .scan/*.har
 
+      - name: stop bwapp 
+        run: |
+          docker stop $(docker ps -q --filter ancestor=whs:bwapp)
+         
       - name: "upload scan results"
         if: ${{ always() }}
         uses: actions/upload-artifact@v1
