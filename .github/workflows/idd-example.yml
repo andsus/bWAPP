@@ -51,8 +51,8 @@ jobs:
         with:
           name: IDD Scan Report
           path: results.html
-      - name: "create issue"
-        if: ${{ always() }}
-        uses: andsus/create-an-issue@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.REPO_GITHUB_TOKEN }}
+      # - name: "create issue"
+      #   if: ${{ always() }}
+      #   uses: andsus/create-an-issue@v2
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.REPO_GITHUB_TOKEN }}
