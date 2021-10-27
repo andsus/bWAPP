@@ -42,7 +42,7 @@ jobs:
 
       - name: stop bwapp 
         run: |
-          docker.exe stop $(docker ps -q --filter ancestor=whs:bwapp)
+          docker.exe stop $(docker.exe ps -q --filter ancestor=whs:bwapp)
          
       - name: "upload scan results"
         if: ${{ always() }}
