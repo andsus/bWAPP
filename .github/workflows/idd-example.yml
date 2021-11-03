@@ -54,6 +54,13 @@ jobs:
         run: |
           docker stop $(docker ps -q --filter ancestor=whs:bwapp)
          
+      - name: "upload zap html report"
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v1
+        with:
+          name: ZAP Scan Report
+          path: report_html.html
+    
       # - name: "upload scan results"
       #   if: ${{ always() }}
       #   uses: actions/upload-artifact@v1
