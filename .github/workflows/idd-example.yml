@@ -25,11 +25,11 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: create container
-        run: docker.exe build . --file Dockerfile -t whs:bwapp
+        run: docker build . --file Dockerfile -t whs:bwapp
         
       - name: start bwapp 
         run: |
-          docker.exe run -d -p 3005:80 whs:bwapp
+          docker run -d -p 3005:80 whs:bwapp
           wget --quiet --wait=3 http://localhost:3005/install.php?install=yes
 
       - name: run security test        
@@ -43,7 +43,7 @@ jobs:
 
       - name: stop bwapp 
         run: |
-          docker.exe stop $(docker.exe ps -q --filter ancestor=whs:bwapp)
+          docker stop $(docker ps -q --filter ancestor=whs:bwapp)
          
       - name: "upload scan results"
         if: ${{ always() }}
